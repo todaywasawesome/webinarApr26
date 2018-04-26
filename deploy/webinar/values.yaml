@@ -8,7 +8,7 @@ image:
   pullPolicy: Always
 service:
   name: webinar
-  type: ClusterIP
+  type: LoadBalancer
   externalPort: 80
   internalPort: 3000
 ingress:
