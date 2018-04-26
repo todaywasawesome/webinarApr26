@@ -1,20 +1,22 @@
-build_step:
-  type: build
-  title: BuildDocker
-  description: multistage build
-  dockerfile: path/to/Dockerfile
-  image_name: verchol/demo
-  tag: ${{CF_BRANCH}}
-  build_arguments:
-    - node_ver=latest
-  #target: stage1
-  fail_fast: false
-  metadata:
-    set:
-      - version: pending
-deploy:
-  image: 'codefresh/cfstep-helm:2.8.0'
-  when:
-    branch:
-      only:
-          - master
+version: '1.0'
+steps:
+  build_step:
+    type: build
+    title: BuildDocker
+    description: multistage build
+    dockerfile: path/to/Dockerfile
+    image_name: verchol/demo
+    tag: ${{CF_BRANCH}}
+    build_arguments:
+      - node_ver=latest
+    #target: stage1
+    fail_fast: false
+    metadata:
+      set:
+        - version: pending
+  deploy:
+    image: 'codefresh/cfstep-helm:2.8.0'
+    when:
+      branch:
+        only:
+            - master
