@@ -18,7 +18,7 @@ steps:
   push:
     type: push
     title: Push to Dockerhub
-    candidate: ${{build_step_name}}
+    candidate: ${{build_step}}
     tag: ${{CF_BRANCH}}
     image_name: verchol/webinardemo
     registry:  registry.hub.docker.com/
