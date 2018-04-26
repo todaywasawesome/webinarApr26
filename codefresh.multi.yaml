@@ -5,7 +5,7 @@ steps:
     title: BuildDocker
     description: multistage build
     dockerfile: Dockerfile.multistage
-    image_name: verchol/demo
+    image_name: verchol/webinardemo
     tag: ${{CF_BRANCH}}
     build_arguments:
       - node_ver=latest
@@ -14,9 +14,18 @@ steps:
     metadata:
       set:
         - version: pending
-  deploy:
-    image: 'codefresh/cfstep-helm:2.8.0'
-    when:
-      branch:
-        only:
-            - master
+
+  push:
+    type: push
+    title: Push to Dockerhub
+    candidate: ${{build_step_name}}
+    tag: ${{CF_BRANCH}}
+    image_name: verchol/webinardemo
+    registry:  registry.hub.docker.com/
+      credentials:
+        username: $USER
+        password: $PWD
+    fail_fast: false
+    branch:
+          only:
+              - master
