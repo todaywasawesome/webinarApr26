@@ -4,7 +4,7 @@ steps:
     type: build
     title: BuildDocker
     description: multistage build
-    dockerfile: path/to/Dockerfile
+    dockerfile: Dockerfile.multistage
     image_name: verchol/demo
     tag: ${{CF_BRANCH}}
     build_arguments:
