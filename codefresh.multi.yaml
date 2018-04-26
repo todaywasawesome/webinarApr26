@@ -22,7 +22,7 @@ steps:
     tag: ${{CF_BRANCH}}
     image_name: verchol/webinardemo
     registry:  registry.hub.docker.com/
-      credentials:
+    credentials:
         username: $USER
         password: $PWD
     fail_fast: false
