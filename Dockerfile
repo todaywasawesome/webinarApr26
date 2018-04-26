@@ -1,2 +1,2 @@
 FROM verchol/baseimage
-RUN echo do something
+RUN echo do something 
