@@ -4,7 +4,7 @@ build_step:
   description: multistage build
   dockerfile: path/to/Dockerfile
   image_name: verchol/demo
-  tag: ${CF_BRANCH}
+  tag: ${{CF_BRANCH}}
   build_arguments:
     - node_ver=latest
   #target: stage1
@@ -12,3 +12,9 @@ build_step:
   metadata:
     set:
       - version: pending
+deploy:
+  image: 'codefresh/cfstep-helm:2.8.0'
+  when:
+    branch:
+      only:
+          - master
