@@ -21,7 +21,7 @@ steps:
     candidate: ${{build_step}}
     tag: ${{CF_BRANCH}}
     image_name: verchol/webinardemo
-    registry:  registry.hub.docker.com/
+    registry:  index.docker.io/v1
     credentials:
         username: $USER
         password: $PWD
