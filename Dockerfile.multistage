@@ -3,16 +3,13 @@ RUN mkdir /src
 WORKDIR /src
 COPY ./package.json /src
 RUN npm install
-RUn npm install gulp
+RUN npm install gulp
 
 FROM node:latest AS build
-RUN mkdir /src
 WORKDIR /src
 COPY --from=cache /src/node_modules /src/node_modules
-RUN cd /src
-# RUN cd /src && npm install gulp && echo 1
-COPY  ./package.json /src
-RUN npm install
+#COPY  ./package.json /src
+#RUN npm install
 COPY . /src
 RUN ls .
 RUN node node_modules/gulp/bin/gulp test
